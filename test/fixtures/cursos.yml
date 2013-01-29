@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  organizacion_id: 1
+  anio: 1
+  division: 1
+  nombre: MyString
+
+two:
+  organizacion_id: 1
+  anio: 1
+  division: 1
+  nombre: MyString

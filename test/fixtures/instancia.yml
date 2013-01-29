@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  curso_id: 1
+  nombre: MyString
+  fecha: 2013-01-29
+  cantidad_de_alumnos: 1
+  varones: 1
+  mujeres: 1
+
+two:
+  curso_id: 1
+  nombre: MyString
+  fecha: 2013-01-29
+  cantidad_de_alumnos: 1
+  varones: 1
+  mujeres: 1
