@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Proyecto</title>
+  <%= stylesheet_link_tag    'application' %>
+  <%= stylesheet_link_tag    params[:controller] %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag params[:controller] %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container">
+		<% if notice then %>
+			<p class="notice"><%= notice %></p>
+		<% end %>
+		<% if alert then %>
+	    	<p class="alert"><%= alert %></p>
+	    <% end %>
+	    <div id="user_login_box" style="float:right">
+	      <% if user_signed_in? -%>
+	          <%= current_user.email %> |
+	          <%= link_to 'My cuenta', edit_user_registration_path %> |
+	          <%= link_to 'Salir', destroy_user_session_path, :method => :delete %>
+	      <% else %>
+	        <%= link_to "Ingresar", new_user_registration_path %> or <%= link_to "Registrarse", new_user_session_path %>
+	      <% end %>
+      	</div>
+		<%= yield %>
+	</div>
+</body>
+</html>
