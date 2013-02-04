@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Proyecto</title>
+  <title>Sistema de Administraci&oacute;n de Estad&iacute;sticas Para El Nivel Secundario</title>
   <%= stylesheet_link_tag    'application' %>
   <%= stylesheet_link_tag    params[:controller] %>
   <%= javascript_include_tag 'application' %>
@@ -19,7 +19,7 @@
 	    <div id="user_login_box" style="float:right">
 	      <% if user_signed_in? -%>
 	          <%= current_user.email %> |
-	          <%= link_to 'My cuenta', edit_user_registration_path %> |
+	          <%= link_to 'Mi cuenta', edit_user_registration_path %> |
 	          <%= link_to 'Salir', destroy_user_session_path, :method => :delete %>
 	      <% else %>
 	        <%= link_to "Ingresar", new_user_registration_path %> or <%= link_to "Registrarse", new_user_session_path %>

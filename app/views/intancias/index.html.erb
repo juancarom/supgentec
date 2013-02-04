@@ -1,6 +1,6 @@
-<h1>Listing intancias</h1>
+<h2>Listado de intancias</h2>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th>Curso</th>
     <th>Nombre</th>
@@ -9,9 +9,9 @@
     <th>Adeudan</th>
     <th>Adeudan menos de tres</th>
     <th>Adeudan mas de tres</th>
-    <th>Porc adeuda</th>
-    <th>Porc menos de tres</th>
-    <th>Porc mas de tres</th>
+    <th>Porc. adeuda</th>
+    <th>Porc. menos de tres</th>
+    <th>Porc. mas de tres</th>
     <th></th>
     <th></th>
     <th></th>
@@ -29,13 +29,13 @@
     <td><%= instancia.porc_adeuda %></td>
     <td><%= instancia.porc_menos_de_tres %></td>
     <td><%= instancia.porc_mas_de_tres %></td>
-    <td><%= link_to 'Show', instancia %></td>
-    <td><%= link_to 'Edit', edit_instancia_path(instancia) %></td>
-    <td><%= link_to 'Destroy', instancia, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'ver', instancia, :class => "btn btn-small btn-secondary" %></td>
+    <td><%= link_to 'editar', edit_instancia_path(instancia), :class => "btn btn-small btn-secondary"  %></td>
+    <td><%= link_to 'eliminar', instancia, method: :delete, data: { confirm: 'Seguro desea eliminar?' }, :class => "btn btn-small btn-danger"  %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Instancia', new_instancia_path %>
+<%= link_to 'Agregar Instancia', new_instancia_path, :class => "btn btn-small btn-success"  %>
