@@ -1,9 +1,7 @@
 Mysecurity::Application.routes.draw do
-  resources :materias_instancia
+  resources :intancias
 
-  resources :materia
-
-  resources :instancia
+  resources :materias
 
   resources :cursos
 

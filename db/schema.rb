@@ -11,7 +11,65 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120410182942) do
+ActiveRecord::Schema.define(:version => 20130204124122) do
+
+  create_table "ciudades", :force => true do |t|
+    t.integer  "region_id"
+    t.string   "nombre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "cursos", :force => true do |t|
+    t.integer  "organizacion_id"
+    t.integer  "anio"
+    t.integer  "division"
+    t.string   "nombre"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "intancias", :force => true do |t|
+    t.integer  "curso_id"
+    t.string   "nombre"
+    t.date     "fecha"
+    t.integer  "cantidad_de_alumnos"
+    t.integer  "adeudan"
+    t.integer  "adeudan_menos_de_tres"
+    t.integer  "adeudan_mas_de_tres"
+    t.float    "porc_adeuda"
+    t.float    "porc_menos_de_tres"
+    t.float    "porc_mas_de_tres"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "materias", :force => true do |t|
+    t.string   "nombre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "materias_instancias", :force => true do |t|
+    t.integer  "materia_id"
+    t.integer  "instancia_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "organizaciones", :force => true do |t|
+    t.integer  "ciudad_id"
+    t.integer  "numero"
+    t.string   "nombre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "regiones", :force => true do |t|
+    t.string   "nombre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "role_permissions", :force => true do |t|
     t.integer  "role_id"

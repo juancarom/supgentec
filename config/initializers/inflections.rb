@@ -15,4 +15,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'region', 'regiones'
   inflect.irregular 'organizacion', 'organizaciones'
   inflect.irregular 'ciudad', 'ciudades'
+  inflect.irregular 'materia', 'materias'
+  inflect.irregular 'instancia', 'intancias'
+  inflect.irregular 'materias_instancia', 'materias_instancias'
 end
