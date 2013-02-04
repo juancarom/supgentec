@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :ciudad_id %><br />
-    <%= f.number_field :ciudad_id %>
+    <%= grouped_collection_select(:organizacion, :ciudad_id, Region.all, :ciudad, :nombre, :id, :nombre) %>
   </div>
   <div class="field">
     <%= f.label :numero %><br />

@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :organizacion_id %><br />
-    <%= f.number_field :organizacion_id %>
+    <%= collection_select(:curso, :organizacion_id, Organizacion.all, :id, :nombre) %>
   </div>
   <div class="field">
     <%= f.label :anio %><br />
