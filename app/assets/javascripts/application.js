@@ -8,3 +8,4 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require allPages
+//= require jquery_nested_form

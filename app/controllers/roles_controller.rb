@@ -3,6 +3,7 @@ class RolesController < ApplicationController
   # GET /roles.json
   def index
     @roles = Role.all
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @roles }
@@ -13,7 +14,6 @@ class RolesController < ApplicationController
   # GET /roles/1.json
   def show
     @role = Role.find(params[:id])
-    authorize! :show, @role
 
     respond_to do |format|
       format.html # show.html.erb
@@ -61,7 +61,7 @@ class RolesController < ApplicationController
     respond_to do |format|
       if @role.update_attributes(params[:role])
         format.html { redirect_to @role, notice: 'Role was successfully updated.' }
-        format.json { head :ok }
+        format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @role.errors, status: :unprocessable_entity }
@@ -77,7 +77,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to roles_url }
-      format.json { head :ok }
+      format.json { head :no_content }
     end
   end
 end

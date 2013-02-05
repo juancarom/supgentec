@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role_ids
 
 
+  def role?(role)
+   return !!self.roles.find_by_description(role.to_s)
+  end
+
 end

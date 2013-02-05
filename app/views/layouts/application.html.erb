@@ -7,25 +7,106 @@
   <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag params[:controller] %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag :defaults, "nested_form" %>
 </head>
-<body>
-	<div class="container">
-		<% if notice then %>
-			<p class="notice"><%= notice %></p>
-		<% end %>
-		<% if alert then %>
-	    	<p class="alert"><%= alert %></p>
-	    <% end %>
-	    <div id="user_login_box" style="float:right">
-	      <% if user_signed_in? -%>
-	          <%= current_user.email %> |
-	          <%= link_to 'Mi cuenta', edit_user_registration_path %> |
-	          <%= link_to 'Salir', destroy_user_session_path, :method => :delete %>
+
+
+<div id="navbar-example" class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container" style="width: auto;">
+      <a class="brand" href="<%= url_for root_path %>">Organizaciones</a>
+      <ul class="nav" role="navigation">
+       	
+       	<% if user_signed_in? then %>
+       	
+       	 <!-- ACCESO ADMINISTRADOR-->
+        <% if current_user.role? :admin then %>
+        
+	        <li class="dropdown">
+	          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Organizaciones<b class="caret"></b></a>
+	          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+	            <li><%=link_to "Listado de Organizaciones", organizaciones_path, :tabindex => "-1"%></li>
+	            <li><%=link_to "Nueva Organización", :tabindex => "-1"%></li>
+	          </ul>
+	        </li>
+	        
+	                
+        
+	        <li class="dropdown">
+	          <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Configuraci&oacute;n <b class="caret"></b></a>
+	          <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+	           	<li><%=link_to "Ciudades", ciudades_path, :tabindex => "-1"%></li>
+	            <li><%=link_to "Cursos", cursos_path, :tabindex => "-1"%></li>
+	            <li><%=link_to "Instancias", intancias_path, :tabindex => "-1"%></li> 
+	            <li><%=link_to "Materias", materias_path, :tabindex => "-1"%></li>
+	            <li><%=link_to "Regiones", regiones_path, :tabindex => "-1"%></li>
+	            <li><%=link_to "Roles", roles_path, :tabindex => "-1"%></li> 
+	            <li><%=link_to ">Usuarios", users_path, :tabindex => "-1"%></li>         
+	          </ul>
+	        </li>
+	        <% end %>
+        <% end %>
+      </ul>
+
+      
+      <!-- INFORMACION DE LOGGING -->
+      <ul class="nav pull-right">
+        <li id="fat-menu" class="dropdown">
+          <% if user_signed_in? %>
+	          <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Bienvenido: <%= current_user.email %> <b class="caret"></b></a>
+	          <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+	          	<li><%=link_to "Mi cuenta", edit_user_registration_path, :tabindex => "-1"%></li>
+	            <li class="divider"></li>
+	            <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete, :tabindex => "-1" %></li>            
+	          </ul>
 	      <% else %>
-	        <%= link_to "Ingresar", new_user_registration_path %> or <%= link_to "Registrarse", new_user_session_path %>
-	      <% end %>
-      	</div>
-		<%= yield %>
+	          <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">No ha iniciado sesion<b class="caret"></b></a>
+	          <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+	          	<li><%= link_to "Iniciar Sesion", new_user_session_path , :tabindex => "-1" %></li> 
+	          	<li class="divider"></li>
+	            <li><%= link_to "Registrar", new_user_registration_path, :tabindex => "-1"%></li>           
+	          </ul>
+		  <% end %>
+        </li>
+      </ul>
+	 
+      
+          
+    </div>
+  </div>
+</div> 									
+
+<div class="row"> 
+	<div class="span1">
+		
 	</div>
-</body>
+	<div class="span11">
+		<div class="container">
+		   <% if flash[:error] then %>
+		   	<div class="alert alert-error">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<h4>Error!</h4>
+				<%= flash[:error]%>
+    		</div>
+		   <% end %>
+		   <% if alert then %>
+       		<div class="alert alert-block">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<h4>Advertencia!</h4>
+				<%= alert %>
+			</div>	       		
+		   <% end %>
+		   <% if notice then%>   
+		       <div class="alert alert-info">
+    				<%= notice%>
+    		   </div>
+    	   <% end %>
+		   <%= yield %>
+		      
+
+		</div>
+	</div>
+</div>			
+
+
 </html>
