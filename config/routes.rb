@@ -1,8 +1,6 @@
 Mysecurity::Application.routes.draw do
   resources :instancias
 
-  resources :intancias
-
   resources :regiones
 
   resources :materias
