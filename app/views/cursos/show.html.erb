@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+
 <p>
-  <b>Organizacion:</b>
-  <%= @curso.organizacion_id %>
+ <b>Nombre:</b>
+  <%= @curso.nombre %>
 </p>
 
 <p>
@@ -16,9 +17,46 @@
 </p>
 
 <p>
-  <b>Nombre:</b>
-  <%= @curso.nombre %>
+  <b>Organizacion:</b>
+  <%= @curso.organizacion %>
 </p>
+
+<p>
+  <b>Instancias:</b>
+  <table class="table table-striped">
+  	<th>Nombre</th>
+  	<th>Cantidad de Alumnos</th>
+  	<th>Adeudan</th>
+  	<th>Adeudan más de 3</th>
+  	<th>Adeudan menos de 3</th>
+  	<th>% Adeudan</th>
+  	<th>% Adeudan más de 3</th>
+  	<th>% Adeudan menos de 3</th>
+	  <% @curso.instancias.each do |i| %>
+	  	<tr>
+	  		<td> 
+	  			<%= i.nombre %>
+	  		</td>
+	  		<td>
+	  			<%= i.cantidad_de_alumnos %>
+	  		</td>
+	  		<td>
+	  			<%= i.adeudan %>
+			</td>
+			<td>
+	  			<%= i.adeudan_mas_de_tres %>
+			</td>
+			<td>
+	  			<%= i.adeudan_menos_de_tres %>
+			</td>
+			<td>
+				<%= i.porc_adeuda %>
+			</td>
+		</tr>
+	  <% end %>	
+</table>
+</p>
+
 
 
 <%= link_to 'editar', edit_curso_path(@curso) %> |

@@ -29,16 +29,24 @@
   </div>
 
   <div class="field">
-    <label>Curso:</label><br />
-      <%= f.fields_for :instancia do |i|%>
+    <label>Instancia:</label><br />
+      <%= f.fields_for :instancias do |i|%>
         <p>
-          Nombre: <%= i.text_field(:nombre) %>
-          Cant. Alumnos: <%= select(:instancia, :cantidad_de_alumnos, (1..10).to_a) %>
-          Nombre: <%= %>
+
+          Nombre de la Instancia: <%= i.text_field(:nombre) %>&nbsp;
+          Cant. Alumnos: <%= i.text_field(:cantidad_de_alumnos, :class => "input-mini") %>&nbsp;
+          Adeudan: <%= i.text_field(:adeudan, :class => "input-mini") %>&nbsp;
+          Adeudan más de 3: <%= i.text_field(:adeudan_mas_de_tres, :class => "input-mini") %>&nbsp;
+          Adeudan menos de 3: <%= i.text_field(:adeudan_menos_de_tres, :class => "input-mini") %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          Fecha: <%= i.date_select(:fecha) %>
+
           <%= i.link_to_remove "eliminar", :class => "btn btn-danger btn-mini" %>
         </p>
       <% end %>
-    <p><%= f.link_to_add "agregar instancia", :instancia, :class => "btn btn-success" %></p>
+    <p><%= f.link_to_add "agregar instancia", :instancias, :class => "btn btn-success" %></p>
   </div>
 
   <div class="actions">

@@ -4,10 +4,10 @@ class Curso < ActiveRecord::Base
 
   belongs_to :organizacion
 
-  attr_accessible :instancia_attributes
+  attr_accessible :instancias_attributes
 
-  has_many :instancia, :dependent => :destroy
-  accepts_nested_attributes_for :instancia, :allow_destroy => true
+  has_many :instancias, :dependent => :destroy
+  accepts_nested_attributes_for :instancias, :allow_destroy => true
 
   def to_s
   	self.anio + " " + self.nombre
