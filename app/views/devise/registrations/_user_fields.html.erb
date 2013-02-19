@@ -7,3 +7,11 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
+  <% if current_user.role? :admin then %>
+	  <div ><label>Organizaciones</label></div><br />
+	  <%= hidden_field_tag "user[organizacion_ids][]", nil%>
+	  <% Organizacion.all.each do |o| %>
+		<%= check_box_tag "user[organizacion_ids][]", o.id, @user.organizacion_ids.include?(o.id) %><%= o %><br />
+	  <% end %>
+  <% end %>
+  <br>

@@ -11,6 +11,13 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role_ids
 
 
+
+  has_many :cursos, :through => :organizaciones 
+  has_many :user_organizacion
+  has_many :organizaciones, :through => :user_organizacion
+  has_many :instancias, :through => :cursos
+
+
   def role?(role)
    return !!self.roles.find_by_description(role.to_s)
   end

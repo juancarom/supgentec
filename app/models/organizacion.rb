@@ -8,6 +8,10 @@ class Organizacion < ActiveRecord::Base
   has_many :curso, :dependent => :destroy
   accepts_nested_attributes_for :curso, :allow_destroy => true
 
+  has_many :user_organizacion
+  has_many :user, :through => :user_organizacion
+
+
   def to_s
   	self.nombre
   end
