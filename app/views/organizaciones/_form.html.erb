@@ -29,8 +29,10 @@
     <label>Curso:</label><br />
       <%= f.fields_for :curso do |c|%>
         <p>
-          Año: <%= select(:curso, :anio, (1..7).to_a) %>
-          Division: <%= select(:curso, :division, (1..10).to_a) %>
+          <!-- Año: <%= select(:curso, :anio, (1..7).to_a) %>
+          Division: <%= select(:curso, :division, (1..10).to_a) %> -->
+          Año: <%= c.text_field(:anio)%>
+          División: <%= c.text_field(:division)%>
           Nombre: <%= c.text_field(:nombre)%>
           <%= c.link_to_remove "eliminar", :class => "btn btn-danger btn-mini" %>
         </p>

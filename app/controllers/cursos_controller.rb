@@ -46,6 +46,8 @@ class CursosController < ApplicationController
       if @curso.save
         @curso.instancias.each do |i| 
           i.calcularPorcentajeAdeudan
+          i.calcularPorcentajeAdeudanMasDeTres
+          i.calcularPorcentajeAdeudanMenosDeTres
         end
         format.html { redirect_to @curso, notice: 'Curso was successfully created.' }
         format.json { render json: @curso, status: :created, location: @curso }
@@ -65,6 +67,8 @@ class CursosController < ApplicationController
       if @curso.update_attributes(params[:curso])
         @curso.instancias.each do |i| 
           i.calcularPorcentajeAdeudan
+          i.calcularPorcentajeAdeudanMasDeTres
+          i.calcularPorcentajeAdeudanMenosDeTres
         end
         format.html { redirect_to @curso, notice: 'Curso was successfully updated.' }
         format.json { head :no_content }

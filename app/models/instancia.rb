@@ -9,4 +9,14 @@ class Instancia < ActiveRecord::Base
   	self.save
   end
 
+   def calcularPorcentajeAdeudanMasDeTres
+  	self.porc_mas_de_tres= self.adeudan_mas_de_tres * 100 / self.cantidad_de_alumnos
+  	self.save
+  end
+
+   def calcularPorcentajeAdeudanMenosDeTres
+  	self.porc_menos_de_tres = self.adeudan_menos_de_tres * 100 / self.cantidad_de_alumnos
+  	self.save
+  end
+
 end

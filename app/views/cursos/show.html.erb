@@ -27,11 +27,11 @@
   	<th>Nombre</th>
   	<th>Cantidad de Alumnos</th>
   	<th>Adeudan</th>
-  	<th>Adeudan más de 3</th>
-  	<th>Adeudan menos de 3</th>
-  	<th>% Adeudan</th>
-  	<th>% Adeudan más de 3</th>
-  	<th>% Adeudan menos de 3</th>
+  	<th>más de 3</th>
+  	<th>menos de 3</th>
+  	<th>% total</th>
+  	<th>% más de 3</th>
+  	<th>% menos de 3</th>
 	  <% @curso.instancias.each do |i| %>
 	  	<tr>
 	  		<td> 
@@ -51,6 +51,12 @@
 			</td>
 			<td>
 				<%= i.porc_adeuda %>
+			</td>
+			<td>
+				<%= i.porc_mas_de_tres %>
+			</td>
+			<td>
+				<%= i.porc_menos_de_tres %>
 			</td>
 		</tr>
 	  <% end %>	
