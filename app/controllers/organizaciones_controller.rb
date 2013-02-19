@@ -2,7 +2,15 @@ class OrganizacionesController < ApplicationController
   # GET /organizaciones
   # GET /organizaciones.json
   def index
-    @organizaciones = Organizacion.all
+    if params["buscarOrganizacion"] then
+      if params["buscarOrganizacion"] == "" then
+        @organizaciones = Organizacion.all
+      else
+        @organizaciones = Organizacion.where(['nombre LIKE ?', "%"+params["buscarOrganizacion"]+"%"])
+      end
+    else      
+      @organizaciones = Organizacion.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

@@ -4,6 +4,7 @@ class Organizacion < ActiveRecord::Base
 
   attr_accessible :curso_attributes
 
+  belongs_to :ciudad
   has_many :curso, :dependent => :destroy
   accepts_nested_attributes_for :curso, :allow_destroy => true
 

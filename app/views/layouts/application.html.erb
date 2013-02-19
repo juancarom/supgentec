@@ -18,6 +18,20 @@
       <ul class="nav" role="navigation">
        	
        	<% if user_signed_in? then %>
+
+       	<!-- ACCESO ORGANIZACION-->
+        <% if current_user.role? :organizacion then %>
+        
+	        <li class="dropdown">
+	          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Mi Organización<b class="caret"></b></a>
+	          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+	            <li><%=link_to "Listado de Cursos", cursos_path, :tabindex => "-1"%></li>
+	            <li><%=link_to "Agregar Cursos", new_curso_path,  :tabindex => "-1"%></li>
+	          </ul>
+	        </li>
+
+	    <% end %>
+    
        	
        	 <!-- ACCESO ADMINISTRADOR-->
         <% if current_user.role? :admin then %>
@@ -26,7 +40,7 @@
 	          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Organizaciones<b class="caret"></b></a>
 	          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
 	            <li><%=link_to "Listado de Organizaciones", organizaciones_path, :tabindex => "-1"%></li>
-	            <li><%=link_to "Nueva Organización", :tabindex => "-1"%></li>
+	            <li><%=link_to "Nueva Organización", new_organizacion_path,  :tabindex => "-1"%></li>
 	          </ul>
 	        </li>
 	        

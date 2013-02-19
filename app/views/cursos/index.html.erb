@@ -1,8 +1,15 @@
 <h2>Listado de cursos</h2>
 
+<form class="form-search" action="../../cursos">
+  <div class="input-prepend">
+    <button type="submit" class="btn" >Buscar</button>
+    <input type="text" class="span2 search-query" name="buscarCurso" placeholder="buscar por organización">
+  </div>
+</form>
+
 <table class="table table-striped">
   <tr>
-    <th>Organizaci&oacute;n</th>
+    <th>Organizaci&oacute;n del Curso</th>
     <th>A&ntilde;o</th>
     <th>Divisi&oacute;n</th>
     <th>Nombre</th>
@@ -17,8 +24,8 @@
     <td><%= curso.anio %></td>
     <td><%= curso.division %></td>
     <td><%= curso.nombre %></td>
-    <td><%= link_to 'ver', curso, :class => "btn btn-small btn-secondary" %></td>
-    <td><%= link_to 'editar', edit_curso_path(curso), :class => "btn btn-small btn-secondary" %></td>
+    <td><%= link_to 'ver', curso, :class => "btn btn-small btn-success" %></td>
+    <td><%= link_to 'editar', edit_curso_path(curso), :class => "btn btn-small btn-warning" %></td>
     <td><%= link_to 'eliminar', curso, method: :delete, data: { confirm: 'Esta seguro de que desea eliminar?' }, :class => "btn btn-small btn-danger" %></td>
   </tr>
 <% end %>
@@ -26,4 +33,4 @@
 
 <br />
 
-<%= link_to 'Agregar Curso', new_curso_path, :class => "btn btn-small btn-success" %>
+<!-- <%= link_to 'Agregar Curso', new_curso_path, :class => "btn btn-small btn-success" %> -->

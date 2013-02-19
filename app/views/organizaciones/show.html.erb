@@ -1,19 +1,42 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Ciudad:</b>
-  <%= @organizacion.ciudad_id %>
+  <b>Nombre:</b>
+  <%= @organizacion.nombre %>
 </p>
-
 <p>
   <b>N&uacute;mero:</b>
   <%= @organizacion.numero %>
 </p>
-
 <p>
-  <b>Nombre:</b>
-  <%= @organizacion.nombre %>
+  <b>Ciudad:</b>
+  <%= @organizacion.ciudad %>
 </p>
+<p>
+  <b>Cursos:</b>
+  <table class="table table-striped">
+  	<th>Año</th>
+  	<th>División</th>
+  	<th>Nombre</th>
+  	<th></th>
+  	<th></th>
+  	<% @organizacion.curso.each do |c| %>
+	  	<tr><td>
+	  			<%= c.anio %>
+	  		</td>
+	  		<td>
+	  			<%= c.division %>
+			</td>
+			<td> 
+	  			<%= c.nombre %>
+	  		</td>
+	  		<td><%= link_to 'ver', c, :class => "btn btn-small btn-success" %></td>
+   			<td><%= link_to 'editar', edit_curso_path(c), :class => "btn btn-small btn-warning" %></td>
+		</tr>
+	  <% end %>	
+</table>
+</p>
+
 
 <%= link_to 'editar', edit_organizacion_path(@organizacion) %> |
 <%= link_to 'atras', organizaciones_path %>

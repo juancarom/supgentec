@@ -1,10 +1,17 @@
-<h2>Listado de organizaciones</h2>
+<h2>Listado de Organizaciones</h2>
+
+<form class="form-search" action="../../organizaciones">
+  <div class="input-prepend">
+    <button type="submit" class="btn" >Buscar</button>
+    <input type="text" class="span2 search-query" name="buscarOrganizacion" placeholder="organización a buscar">
+  </div>
+</form>
 
 <table class="table table-striped">
   <tr>
-    <th>Ciudad</th>
-    <th>N&uacute;mero</th>
     <th>Nombre</th>
+    <th>N&uacute;mero</th>
+    <th>Ciudad</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,11 +19,11 @@
 
 <% @organizaciones.each do |organizacion| %>
   <tr>
-    <td><%= organizacion.ciudad_id %></td>
-    <td><%= organizacion.numero %></td>
     <td><%= organizacion.nombre %></td>
-    <td><%= link_to 'ver', organizacion, :class => "btn btn-small btn-secondary" %></td>
-    <td><%= link_to 'editar', edit_organizacion_path(organizacion), :class => "btn btn-small btn-secondary" , :class => "btn btn-small btn-secondary"  %></td>
+    <td><%= organizacion.numero %></td>    
+    <td><%= organizacion.ciudad %></td>
+    <td><%= link_to 'ver', organizacion, :class => "btn btn-small btn-success" %></td>
+    <td><%= link_to 'editar', edit_organizacion_path(organizacion), :class => "btn btn-small btn-warning" %></td>
     <td><%= link_to 'eliminar', organizacion, method: :delete, data: { confirm: 'Seguro desea eliminar?' }, :class => "btn btn-small btn-danger"  %></td>
   </tr>
 <% end %>
