@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role_ids
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role_ids, :organizaciones, :user_organizacion_attributes, :organizacion_ids 
+  
 
 
 
@@ -18,8 +19,8 @@ class User < ActiveRecord::Base
   has_many :instancias, :through => :cursos
 
 
-  def role?(role)
-   return !!self.roles.find_by_description(role.to_s)
+    def role?(role)
+    return !!self.roles.find_by_description(role.to_s.camelize)
   end
 
 end

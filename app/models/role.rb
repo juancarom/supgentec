@@ -1,4 +1,6 @@
 class Role < ActiveRecord::Base
+  attr_accessible :description
+  
   has_many :role_children, :foreign_key => 'parent_id', :class_name => 'RoleRole'
   has_many :children, :through => :role_children
   

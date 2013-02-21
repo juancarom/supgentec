@@ -78,6 +78,7 @@ Mysecurity::Application.routes.draw do
   #
   #
 
-  root :to => "organizaciones#index"
+  root :to => "users#index"
+
 
 end

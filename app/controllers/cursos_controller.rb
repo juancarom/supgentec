@@ -2,15 +2,21 @@ class CursosController < ApplicationController
   # GET /cursos
   # GET /cursos.json
   def index
-    if params["buscarCurso"] then
-      if params["buscarCurso"] == "" then
-        @cursos = Curso.all
-      else
-        @cursos = Curso.where(['organizacion_id LIKE ?', "%"+params["buscarCurso"]+"%"])
-      end
-    else      
+
+    if current_user.role? :organizacion then
+      @cursos = current_user.cursos
+    else 
       @cursos = Curso.all
     end
+
+    #if params["buscarCurso"] then
+     # if params["buscarCurso"] == "" then
+      #  @cursos = Curso.all
+      ## @cursos = Curso.where(['organizacion_id LIKE ?', "%"+params["buscarCurso"]+"%"])
+      #end
+    #else      
+     # @cursos = Curso.all
+    #end
 
     respond_to do |format|
       format.html # index.html.erb
