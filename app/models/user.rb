@@ -19,8 +19,12 @@ class User < ActiveRecord::Base
   has_many :instancias, :through => :cursos
 
 
-    def role?(role)
+  def role?(role)
     return !!self.roles.find_by_description(role.to_s.camelize)
+  end
+
+  def organizacion
+    self.organizaciones.first
   end
 
 end

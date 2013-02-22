@@ -1,4 +1,6 @@
 Mysecurity::Application.routes.draw do
+
+  
   resources :instancias
 
   resources :regiones
@@ -78,7 +80,12 @@ Mysecurity::Application.routes.draw do
   #
   #
 
-  root :to => "users#index"
+
+  # acá utilizo  la gema "high_voltage" para establecer la página de inicio. Fuente: https://github.com/thoughtbot/high_voltage
+  match "/pages/*id" => 'pages#show', :as => :page, :format => false
+  root :to => 'pages#show', :id => 'inicio'
+
+  #root :to => "inicio#inicio"
 
 
 end

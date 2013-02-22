@@ -11,9 +11,11 @@
     </div>
   <% end %>
 
+
   <div class="field">
-    <%= f.label :organizacion_id %><br />
-    <%= collection_select(:curso, :organizacion_id, Organizacion.all, :id, :nombre) %>
+    <h3> <%= current_user.organizacion.nombre %> </h3>
+    <!--<%= f.label :organizacion_id, :class => "hidden" %> -->
+    <!--<%= f.text_field :organizacion_id, :class => "hidden", :value => "" %> -->
   </div>
   <div class="field">
     <%= f.label "año" %><br />
@@ -34,10 +36,10 @@
         <p>
 
           Nombre de la Instancia: <%= i.text_field(:nombre) %>&nbsp;
-          Cant. Alumnos: <%= i.text_field(:cantidad_de_alumnos, :class => "input-mini") %>&nbsp;
-          Adeudan: <%= i.text_field(:adeudan, :class => "input-mini") %>&nbsp;
-          Adeudan más de 3: <%= i.text_field(:adeudan_mas_de_tres, :class => "input-mini") %>&nbsp;
-          Adeudan menos de 3: <%= i.text_field(:adeudan_menos_de_tres, :class => "input-mini") %>
+          Cant. Alumnos: <%= i.text_field(:cantidad_de_alumnos, :class => "input-mini", :value => "0") %>&nbsp;
+          Adeudan: <%= i.text_field(:adeudan, :class => "input-mini", :value => "0") %>&nbsp;
+          Adeudan más de 3: <%= i.text_field(:adeudan_mas_de_tres, :class => "input-mini", :value => "0") %>&nbsp;
+          Adeudan menos de 3: <%= i.text_field(:adeudan_menos_de_tres, :class => "input-mini", :value => "0") %>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

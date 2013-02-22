@@ -56,6 +56,10 @@ class CursosController < ApplicationController
   def create
     @curso = Curso.new(params[:curso])
 
+    if current_user.role? :organizacion then
+      @curso.organizacion_id = current_user.organizacion.id
+    end
+
     respond_to do |format|
       if @curso.save
         @curso.instancias.each do |i| 
