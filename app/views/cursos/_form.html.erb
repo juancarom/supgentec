@@ -13,37 +13,40 @@
 
 
   <div class="field">
+    <% if current_user.role? :organizacion then %>
     <h3> <%= current_user.organizacion.nombre %> </h3>
+    <% end %>
     <!--<%= f.label :organizacion_id, :class => "hidden" %> -->
     <!--<%= f.text_field :organizacion_id, :class => "hidden", :value => "" %> -->
   </div>
+  <h5>
   <div class="field">
-    <%= f.label "año" %><br />
+    <%= f.label "año" %>
     <%= select(:curso, :anio, (1..7)) %>
   </div>
   <div class="field">
-    <%= f.label :division %><br />
+    <%= f.label :division %>
     <%= select(:curso, :division, (1..10)) %>
   </div>
   <div class="field">
-    <%= f.label :nombre %><br />
+    <%= f.label :nombre %>
     <%= f.text_field :nombre, :class => "span2" %>
   </div>
+  </h5>
 
   <div class="field">
-    <label>Instancia:</label><br />
+    <label><h5>Instancia:</h5></label>
       <%= f.fields_for :instancias do |i|%>
         <p>
 
-          Nombre de la Instancia: <%= i.text_field(:nombre) %>&nbsp;
-          Cant. Alumnos: <%= i.text_field(:cantidad_de_alumnos, :class => "input-mini", :value => "0") %>&nbsp;
-          Adeudan: <%= i.text_field(:adeudan, :class => "input-mini", :value => "0") %>&nbsp;
+          <h5>Nombre de la Instancia: <%= i.text_field(:nombre) %></h5> 
+          <h5>Cantidad de Alumnos: &nbsp; <%= i.text_field(:cantidad_de_alumnos, :class => "input-mini", :value => "0") %></h5>
+          <h5>
+          Adeudan: <%= i.text_field(:adeudan, :class => "input-mini", :value => "0") %>
           Adeudan más de 3: <%= i.text_field(:adeudan_mas_de_tres, :class => "input-mini", :value => "0") %>&nbsp;
           Adeudan menos de 3: <%= i.text_field(:adeudan_menos_de_tres, :class => "input-mini", :value => "0") %>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          Fecha: <%= i.date_select(:fecha) %>
+          </h5>
+          <h5>Fecha: <%= i.date_select(:fecha) %></h5>
 
           <%= i.link_to_remove "eliminar", :class => "btn btn-danger btn-mini" %>
         </p>
