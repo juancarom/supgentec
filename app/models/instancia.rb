@@ -6,6 +6,17 @@ class Instancia < ActiveRecord::Base
   validates :cantidad_de_alumnos, :numericality => true
   validates :cantidad_de_alumnos, :numericality => { :greater_than => 0, :message => "debe ser mayor a cero" }
 
+  validates :adeudan, :numericality => { :greater_than => 0, :message => "debe ser mayor a cero"}
+  validates :adeudan, :numericality => { :less_than_or_equal_to => :cantidad_de_alumnos, :message => "debe ser menor a cantidad de alumnos"}
+
+  validates :adeudan_mas_de_tres, :numericality => { :greater_than_or_equal_to => 0, :message => "no puede ser negativo"}
+  validates :adeudan_mas_de_tres, :numericality => { :less_than_or_equal_to => :adeudan, :message => "no puede ser mayor a la cantidad de alumnos que adeudan"}
+
+  validates :adeudan_menos_de_tres, :numericality => { :greater_than_or_equal_to => 0, :message => "no puede ser negativo"}
+  validates :adeudan_menos_de_tres, :numericality => { :less_than_or_equal_to => :adeudan, :message => "no puede ser mayor a la cantidad de alumnos que adeudan"}
+
+
+
   belongs_to :curso
 
   def calcularPorcentajeAdeudan

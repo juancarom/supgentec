@@ -21,16 +21,16 @@
   </div>
   <h5>
   <div class="field">
-    <%= f.label "año" %>
+    <%= f.label "Año" %>
     <%= select(:curso, :anio, (1..7)) %>
   </div>
   <div class="field">
-    <%= f.label :division %>
+    <%= f.label "División" %>
     <%= select(:curso, :division, (1..10)) %>
   </div>
   <div class="field">
-    <%= f.label :nombre %>
-    <%= f.text_field :nombre, :class => "span2" %>
+    <%= f.label "Nombre del Curso" %>
+    <%= f.text_field :nombre %>
   </div>
   </h5>
 
@@ -51,7 +51,7 @@
           <%= i.link_to_remove "eliminar", :class => "btn btn-danger btn-mini" %>
         </p>
       <% end %>
-    <p><%= f.link_to_add "agregar instancia", :instancias, :class => "btn btn-success" %></p>
+    <p><%= f.link_to_add "Agregar Instancia", :instancias, :class => "btn btn-success" %></p>
   </div>
 
   <div class="actions">
