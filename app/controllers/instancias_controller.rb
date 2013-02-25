@@ -1,4 +1,6 @@
 class InstanciasController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /instancias
   # GET /instancias.json
   def index

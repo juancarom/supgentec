@@ -25,7 +25,7 @@
     <td><%= curso.division %></td>
     <td><%= curso.nombre %></td>
     <td><%= link_to 'ver', curso, :class => "btn btn-small btn-success" %></td>
-    <td><%= link_to 'editar', edit_curso_path(curso), :class => "btn btn-small btn-warning" %></td>
+    <td><%= link_to 'editar', edit_curso_path(curso), :class => "btn btn-small btn-primary" %></td>
     <td><%= link_to 'eliminar', curso, method: :delete, data: { confirm: 'Esta seguro de que desea eliminar?' }, :class => "btn btn-small btn-danger" %></td>
   </tr>
 <% end %>
@@ -34,5 +34,5 @@
 <br />
 
 <% if current_user.role? :organizacion then %>
-  <%= link_to 'Agregar Curso', new_curso_path, :class => "btn btn-small btn-success" %>
+  <%= link_to 'Agregar Curso', new_curso_path, :class => "btn btn-medium btn-success" %>
 <% end %>

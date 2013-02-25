@@ -23,7 +23,7 @@
     <td><%= organizacion.numero %></td>    
     <td><%= organizacion.ciudad %></td>
     <td><%= link_to 'ver', organizacion, :class => "btn btn-small btn-success" %></td>
-    <td><%= link_to 'editar', edit_organizacion_path(organizacion), :class => "btn btn-small btn-warning" %></td>
+    <td><%= link_to 'editar', edit_organizacion_path(organizacion), :class => "btn btn-small btn-primary" %> </td>
     <td><%= link_to 'eliminar', organizacion, method: :delete, data: { confirm: 'Seguro desea eliminar?' }, :class => "btn btn-small btn-danger"  %></td>
   </tr>
 <% end %>
@@ -31,4 +31,4 @@
 
 <br />
 
-<%= link_to 'Agregar Organización', new_organizacion_path, :class => "btn btn-small btn-success"  %>
+<%= link_to 'Agregar Organización', new_organizacion_path, :class => "btn btn-medium btn-success"  %>

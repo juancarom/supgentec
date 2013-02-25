@@ -40,11 +40,11 @@
         <p>
 
           <h5>Nombre de la Instancia: <%= i.text_field(:nombre) %></h5> 
-          <h5>Cantidad de Alumnos: &nbsp; <%= i.text_field(:cantidad_de_alumnos, :class => "input-mini", :value => "0") %></h5>
+          <h5>Cantidad de Alumnos: &nbsp; <%= i.text_field(:cantidad_de_alumnos, :class => "input-mini") %></h5>
           <h5>
-          Adeudan: <%= i.text_field(:adeudan, :class => "input-mini", :value => "0") %>
-          Adeudan más de 3: <%= i.text_field(:adeudan_mas_de_tres, :class => "input-mini", :value => "0") %>&nbsp;
-          Adeudan menos de 3: <%= i.text_field(:adeudan_menos_de_tres, :class => "input-mini", :value => "0") %>
+          Adeudan: <%= i.text_field(:adeudan, :class => "input-mini") %>
+          Adeudan más de 3: <%= i.text_field(:adeudan_mas_de_tres, :class => "input-mini") %>&nbsp;
+          Adeudan menos de 3: <%= i.text_field(:adeudan_menos_de_tres, :class => "input-mini") %>
           </h5>
           <h5>Fecha: <%= i.date_select(:fecha) %></h5>
 
