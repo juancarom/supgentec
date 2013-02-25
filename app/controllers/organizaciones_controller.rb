@@ -3,9 +3,13 @@ class OrganizacionesController < ApplicationController
   # GET /organizaciones.json
   def index
 
-    if current_user.role? :organizacion then
-      @organizaciones = current_user.organizaciones
-    else 
+    if params["buscarOrganizacion"] then
+      if params["buscarOrganizacion"] == "" then
+       @organizaciones = Organizacion.all
+      else
+        @organizaciones = Organizacion.where(['nombre LIKE ?', "%"+params["buscarOrganizacion"]+"%"])
+      end
+    else      
       @organizaciones = Organizacion.all
     end
     

@@ -3,10 +3,10 @@ class Instancia < ActiveRecord::Base
   attr_accessible :adeudan, :adeudan_mas_de_tres, :adeudan_menos_de_tres, :cantidad_de_alumnos, :curso_id, :fecha, :nombre, :porc_adeuda, :porc_mas_de_tres, :porc_menos_de_tres
 
   validates :cantidad_de_alumnos, :presence => true
-  validates :cantidad_de_alumnos, :numericality => true
+  validates :cantidad_de_alumnos, :numericality => true 
   validates :cantidad_de_alumnos, :numericality => { :greater_than => 0, :message => "debe ser mayor a cero" }
 
-  validates :adeudan, :numericality => { :greater_than => 0, :message => "debe ser mayor a cero"}
+  validates :adeudan, :numericality => { :greater_than_or_equal_to => 0, :message => "debe ser mayor o igual a cero"}
   validates :adeudan, :numericality => { :less_than_or_equal_to => :cantidad_de_alumnos, :message => "debe ser menor a cantidad de alumnos"}
 
   validates :adeudan_mas_de_tres, :numericality => { :greater_than_or_equal_to => 0, :message => "no puede ser negativo"}

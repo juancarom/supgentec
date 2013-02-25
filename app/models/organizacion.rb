@@ -11,6 +11,8 @@ class Organizacion < ActiveRecord::Base
   has_many :user_organizacion
   has_many :user, :through => :user_organizacion
 
+  validates :numero, :numericality => true
+
 
   def to_s
   	self.nombre
