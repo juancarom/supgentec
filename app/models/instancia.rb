@@ -1,4 +1,14 @@
 class Instancia < ActiveRecord::Base
+
+  before_validation :validar_datos
+
+
+  def validar_datos
+    if self.cantidad_de_alumnos == nil then self.cantidad_de_alumnos = 0 end
+    if self.adeudan == nil then self.adeudan = 0 end
+    if self.adeudan_mas_de_tres == nil then self.adeudan_mas_de_tres = 0 end
+    if self.adeudan_menos_de_tres == nil then self.adeudan_menos_de_tres = 0 end
+  end
   
   attr_accessible :adeudan, :adeudan_mas_de_tres, :adeudan_menos_de_tres, :cantidad_de_alumnos, :curso_id, :fecha, :nombre, :porc_adeuda, :porc_mas_de_tres, :porc_menos_de_tres
 

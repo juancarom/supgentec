@@ -1,7 +1,7 @@
 <%= nested_form_for(@curso)  do |f| %>
   <% if @curso.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@curso.errors.count, "error") %> prohibited this curso from being saved:</h2>
+      <h2><%= pluralize(@curso.errors.count, "error impidio") %> que se guardara correctamente:</h2>
 
       <ul>
       <% @curso.errors.full_messages.each do |msg| %>
@@ -36,21 +36,62 @@
 
   <div class="field">
     <label><h5>Instancia:</h5></label>
-      <%= f.fields_for :instancias do |i|%>
-        <p>
 
-          <h5>Nombre de la Instancia: <%= i.text_field(:nombre) %></h5> 
-          <h5>Cantidad de Alumnos: &nbsp; <%= i.text_field(:cantidad_de_alumnos, :class => "input-mini") %></h5>
-          <h5>
-          Adeudan: <%= i.text_field(:adeudan, :class => "input-mini") %>
-          Adeudan más de 3: <%= i.text_field(:adeudan_mas_de_tres, :class => "input-mini") %>&nbsp;
-          Adeudan menos de 3: <%= i.text_field(:adeudan_menos_de_tres, :class => "input-mini") %>
-          </h5>
-          <h5>Fecha: <%= i.date_select(:fecha) %></h5>
+     
+          <%= f.fields_for :instancias do |i|%>
 
-          <%= i.link_to_remove "eliminar", :class => "btn btn-danger btn-mini" %>
-        </p>
-      <% end %>
+          <table class="table table-striped">
+            <th>Nombre Instancia</th>
+            <th>Cant. Alumnos</th>
+            <th>Adeudan</th>
+            <th>más de 3</th>
+            <th>menos de 3</th>
+            <th>Fecha</th>
+            <th></th>
+      
+          <!-- <p> -->
+
+            <!-- <h5>Nombre de la Instancia: <%= i.text_field(:nombre) %></h5> 
+            <h5>Cantidad de Alumnos: &nbsp; <%= i.text_field(:cantidad_de_alumnos, :class => "input-mini") %></h5>
+            <h5>
+            Adeudan: <%= i.text_field(:adeudan, :class => "input-mini") %>
+            Adeudan más de 3: <%= i.text_field(:adeudan_mas_de_tres, :class => "input-mini") %>&nbsp;
+            Adeudan menos de 3: <%= i.text_field(:adeudan_menos_de_tres, :class => "input-mini") %>
+            </h5>
+            <h5>Fecha: <%= i.date_select(:fecha) %></h5> -->
+     
+          <tr>
+            <td> 
+              <%= i.text_field(:nombre) %>
+            </td>
+            <td>
+              <%= i.text_field(:cantidad_de_alumnos, :class => "input-mini") %>
+            </td>
+            <td>
+              <%= i.text_field(:adeudan, :class => "input-mini") %>
+            </td>
+            <td>
+              <%= i.text_field(:adeudan_mas_de_tres, :class => "input-mini") %>
+            </td>
+            <td>
+              <%= i.text_field(:adeudan_menos_de_tres, :class => "input-mini") %>
+            </td>
+            <td>
+              <%= i.datepicker :fecha, :dateFormat => "dd-mm-yy", :dayNamesMin => ["Do", "Lu", "Ma", "Mie", "Jue", "Vie", "Sa"],
+                  :monthNames     => ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
+                  :monthNamesShort  => ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
+                  :navigationAsDateFormat => true, :nextText => "Sig", :prevText => "Ant", :showAnim => "explode" %>
+            </td>
+            <td>
+              <%= i.link_to_remove "eliminar", :class => "btn btn-danger btn-mini" %>
+            </td>
+          </tr>
+          </table>
+          <% end %>
+        
+
+        <!-- </p> -->
+     
     <p><%= f.link_to_add "Agregar Instancia", :instancias, :class => "btn btn-success" %></p>
   </div>
 
