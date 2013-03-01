@@ -1,7 +1,7 @@
 <%= nested_form_for(@curso)  do |f| %>
   <% if @curso.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@curso.errors.count, "error impidio") %> que se guardara correctamente:</h2>
+      <h2><%= pluralize(@curso.errors.count, "error impide") %> que se guardara correctamente:</h2>
 
       <ul>
       <% @curso.errors.full_messages.each do |msg| %>
@@ -46,6 +46,7 @@
             <th>Adeudan</th>
             <th>más de 3</th>
             <th>menos de 3</th>
+            <th>Materias más difíciles</th>
             <th>Fecha</th>
             <th></th>
       
@@ -75,6 +76,12 @@
             </td>
             <td>
               <%= i.text_field(:adeudan_menos_de_tres, :class => "input-mini") %>
+            </td>
+            <td>
+            <p>
+              <%= i.label :materia_tokens, "Materias" %><br />
+              <%= i.text_field :materia_tokens, "data-pre" => i.materias.map(&:attributes).to_json %>
+            </p>
             </td>
             <td>
               <%= i.datepicker :fecha, :dateFormat => "dd-mm-yy", :dayNamesMin => ["Do", "Lu", "Ma", "Mie", "Jue", "Vie", "Sa"],

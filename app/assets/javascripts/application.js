@@ -12,3 +12,19 @@
 //= require jquery-ui
 //= require jquery-ui-timepicker-addon.js
 //= require jquery.min.js
+//= require_tree .
+
+$(document).ready(
+  function() {
+  $("#instancia_materia_tokens").tokenInput("/materias.json", {
+		crossDomain: false,
+		searchingText: "Buscando...",
+		hintText: "Escriba para buscar materias",
+		tokenLimit: 5,
+    	minChars: 1,
+		noResultsText: "No se han encontrado resultados",
+		prePopulate: $("#instancia_materia_tokens").data("pre"),
+		theme: "facebook"
+		
+	});
+});

@@ -10,7 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+              <%= f.label :materia_tokens, "Materias" %><br />
+              <%= f.text_field :materia_tokens, "data-pre" => @instancia.materias.map(&:attributes).to_json %>
+   </div>
   <div class="field">
     <%= f.label :curso_id %><br />
     <%= f.number_field :curso_id %>

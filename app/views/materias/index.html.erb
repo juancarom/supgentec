@@ -10,7 +10,7 @@
 
 <% @materias.each do |materia| %>
   <tr>
-    <td><%= materia.nombre %></td>
+    <td><%= materia.name %></td>
     <td><%= link_to 'ver', materia, :class => "btn btn-small btn-secondary" %></td>
     <td><%= link_to 'editar', edit_materia_path(materia), :class => "btn btn-small btn-secondary" %></td>
     <td><%= link_to 'eliminar', materia, method: :delete, data: { confirm: 'Seguro desea eliminar?' }, :class => "btn btn-small btn-danger" %></td>

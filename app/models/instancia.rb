@@ -1,7 +1,16 @@
 class Instancia < ActiveRecord::Base
 
-  before_validation :validar_datos
+  attr_accessible :materia_tokens
+  has_many :instancia_materia, :dependent => :destroy
+  has_many :materias, :through => :instancia_materia
+  attr_reader :materia_tokens
 
+  def materia_tokens=(ids)
+    self.materia_ids = ids.split(",")
+  end
+
+
+  before_validation :validar_datos
 
   def validar_datos
     if self.cantidad_de_alumnos == nil then self.cantidad_de_alumnos = 0 end
@@ -24,8 +33,6 @@ class Instancia < ActiveRecord::Base
 
   validates :adeudan_menos_de_tres, :numericality => { :greater_than_or_equal_to => 0, :message => "no puede ser negativo"}
   validates :adeudan_menos_de_tres, :numericality => { :less_than_or_equal_to => :adeudan, :message => "no puede ser mayor a la cantidad de alumnos que adeudan"}
-
-
 
   belongs_to :curso
 

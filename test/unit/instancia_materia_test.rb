@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MateriasInstanciaTest < ActiveSupport::TestCase
+class InstanciaMateriaTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
